@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>NEON.OS</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    :root{
+      --neon:#00F5FF;
+      --bg:#02040F;
+      --card:#06101F;
+      --text:#D9F8FF;
+    }
+
+    body{
+      font-family:'Orbitron',sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      overflow-x:hidden;
+      min-height:100vh;
+      position:relative;
+    }
+
+    /* ========================= */
+    /* GRID BACKGROUND */
+    /* ========================= */
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      background:
+      linear-gradient(rgba(0,245,255,0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,245,255,0.08) 1px, transparent 1px);
+      background-size:40px 40px;
+      z-index:-2;
+    }
+
+    body::after{
+      content:"";
+      position:fixed;
+      inset:0;
+      background:
+      radial-gradient(circle at top left, rgba(0,245,255,.15), transparent 30%),
+      radial-gradient(circle at bottom right, rgba(0,245,255,.08), transparent 30%);
+      z-index:-1;
+    }
+
+    /* ========================= */
+    /* TOP NAVBAR */
+    /* ========================= */
+
+    .topbar{
+      width:100%;
+      height:90px;
+      border-bottom:1px solid rgba(0,245,255,.15);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 40px;
+      background:rgba(0,0,0,.35);
+      backdrop-filter:blur(12px);
+    }
+
+    .logo{
+      color:var(--neon);
+      font-size:2rem;
+      font-weight:700;
+      text-shadow:0 0 15px var(--neon);
+    }
+
+    .nav-links{
+      display:flex;
+      gap:50px;
+    }
+
+    .nav-links a{
+      color:#d9f8ff;
+      text-decoration:none;
+      transition:.3s;
+      font-size:.95rem;
+      letter-spacing:2px;
+    }
+
+    .nav-links a:hover{
+      color:var(--neon);
+      text-shadow:0 0 12px var(--neon);
+    }
+
+    .terminal-btn{
+      padding:14px 28px;
+      border:1px solid var(--neon);
+      background:rgba(0,245,255,.05);
+      color:var(--neon);
+      border-radius:8px;
+      box-shadow:0 0 20px rgba(0,245,255,.25);
+      cursor:pointer;
+      transition:.3s;
+    }
+
+    .terminal-btn:hover{
+      background:var(--neon);
+      color:black;
+    }
+
+    /* ========================= */
+    /* MAIN LAYOUT */
+    /* ========================= */
+
+    .container{
+      display:grid;
+      grid-template-columns:240px 1fr 320px;
+      gap:25px;
+      padding:30px;
+    }
+
+    /* ========================= */
+    /* PANELS */
+    /* ========================= */
+
+    .panel{
+      background:rgba(3,12,24,.75);
+      border:1px solid rgba(0,245,255,.25);
+      border-radius:18px;
+      box-shadow:0 0 20px rgba(0,245,255,.15);
+      backdrop-filter:blur(15px);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .panel::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius:18px;
+      padding:1px;
+      background:linear-gradient(
+      135deg,
+      rgba(0,245,255,.6),
+      transparent,
+      rgba(0,245,255,.2));
+      -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+      -webkit-mask-composite:xor;
+      pointer-events:none;
+    }
+
+    /* ========================= */
+    /* SIDEBAR */
+    /* ========================= */
+
+    .sidebar{
+      display:flex;
+      flex-direction:column;
+      gap:25px;
+    }
+
+    .menu{
+      padding:30px 20px;
+    }
+
+    .menu-item{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      padding:18px;
+      margin-bottom:12px;
+      border-radius:12px;
+      cursor:pointer;
+      transition:.3s;
+      color:#d8f8ff;
+    }
+
+    .menu-item:hover,
+    .active{
+      background:rgba(0,245,255,.12);
+      color:var(--neon);
+      box-shadow:0 0 20px rgba(0,245,255,.2);
+    }
+
+    .menu-item i{
+      width:20px;
+      height:20px;
+    }
+
+    .system-info{
+      padding:25px;
+      font-size:.8rem;
+      line-height:2;
+    }
+
+    .system-info h3{
+      color:var(--neon);
+      margin-bottom:15px;
+    }
+
+    /* ========================= */
+    /* CENTER */
+    /* ========================= */
+
+    .center{
+      display:flex;
+      flex-direction:column;
+      gap:25px;
+    }
+
+    .console{
+      padding:40px;
+      min-height:420px;
+    }
+
+    .console h2{
+      color:var(--neon);
+      margin-bottom:40px;
+      font-size:1rem;
+    }
+
+    .console p{
+      font-size:2rem;
+      line-height:1.8;
+      font-family:'Rajdhani',sans-serif;
+    }
+
+    .highlight{
+      color:var(--neon);
+      text-shadow:0 0 10px var(--neon);
+    }
+
+    .divider{
+      width:100%;
+      height:1px;
+      background:rgba(0,245,255,.25);
+      margin:40px 0;
+    }
+
+    /* ========================= */
+    /* PROJECTS */
+    /* ========================= */
+
+    .projects{
+      padding:25px;
+    }
+
+    .projects h2{
+      color:var(--neon);
+      margin-bottom:25px;
+      font-size:1rem;
+    }
+
+    .project-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
+    }
+
+    .project-card{
+      background:rgba(0,245,255,.04);
+      border:1px solid rgba(0,245,255,.2);
+      border-radius:18px;
+      overflow:hidden;
+      transition:.4s;
+    }
+
+    .project-card:hover{
+      transform:translateY(-8px);
+      box-shadow:0 0 25px rgba(0,245,255,.25);
+    }
+
+    .project-image{
+      height:180px;
+      background:
+      linear-gradient(135deg,#001B2E,#031C36);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--neon);
+      font-size:3rem;
+    }
+
+    .project-content{
+      padding:20px;
+    }
+
+    .project-content h3{
+      color:var(--neon);
+      margin-bottom:10px;
+    }
+
+    .project-content p{
+      font-family:'Rajdhani',sans-serif;
+      line-height:1.6;
+      opacity:.85;
+    }
+
+    .project-btn{
+      display:inline-block;
+      margin-top:18px;
+      color:var(--neon);
+      text-decoration:none;
+    }
+
+    /* ========================= */
+    /* RIGHT SIDEBAR */
+    /* ========================= */
+
+    .rightbar{
+      display:flex;
+      flex-direction:column;
+      gap:25px;
+    }
+
+    .status{
+      padding:25px;
+    }
+
+    .status h3{
+      color:var(--neon);
+      margin-bottom:30px;
+    }
+
+    .status-item{
+      margin-bottom:30px;
+    }
+
+    .status-top{
+      display:flex;
+      justify-content:space-between;
+      margin-bottom:10px;
+      font-size:.85rem;
+    }
+
+    .bar{
+      height:8px;
+      background:#021019;
+      border-radius:20px;
+      overflow:hidden;
+    }
+
+    .fill{
+      height:100%;
+      width:100%;
+      background:var(--neon);
+      box-shadow:0 0 15px var(--neon);
+    }
+
+    .terminal{
+      padding:25px;
+      min-height:380px;
+    }
+
+    .terminal h3{
+      color:var(--neon);
+      margin-bottom:30px;
+    }
+
+    .terminal p{
+      line-height:2;
+      font-size:.9rem;
+      color:#A8F7FF;
+    }
+
+    /* ========================= */
+    /* RESPONSIVE */
+    /* ========================= */
+
+    @media(max-width:1200px){
+
+      .container{
+        grid-template-columns:1fr;
+      }
+
+      .project-grid{
+        grid-template-columns:1fr;
+      }
+
+      .nav-links{
+        display:none;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <div class="topbar">
+
+    <div class="logo">
+      NEON.OS
+    </div>
+
+    <div class="nav-links">
+      <a href="#">HOME</a>
+      <a href="#">PROJECTS</a>
+      <a href="#">SKILLS</a>
+      <a href="#">ABOUT</a>
+      <a href="#">CONTACT</a>
+    </div>
+
+    <button class="terminal-btn">
+      >_ TERMINAL
+    </button>
+
+  </div>
+
+  <!-- MAIN -->
+
+  <div class="container">
+
+    <!-- LEFT -->
+
+    <div class="sidebar">
+
+      <div class="panel menu">
+
+        <div class="menu-item active">
+          <i data-lucide="home"></i>
+          HOME
+        </div>
+
+        <div class="menu-item">
+          <i data-lucide="folder"></i>
+          PROJECTS
+        </div>
+
+        <div class="menu-item">
+          <i data-lucide="code"></i>
+          SKILLS
+        </div>
+
+        <div class="menu-item">
+          <i data-lucide="user"></i>
+          ABOUT
+        </div>
+
+        <div class="menu-item">
+          <i data-lucide="mail"></i>
+          CONTACT
+        </div>
+
+      </div>
+
+      <div class="panel system-info">
+
+        <h3>SYSTEM INFO</h3>
+
+        <p>USER: COMMANDER</p>
+        <p>CLEARANCE: LEVEL 7</p>
+        <p>NODE: NEON-PORTFOLIO</p>
+        <p>STATUS: ONLINE</p>
+
+      </div>
+
+    </div>
+
+    <!-- CENTER -->
+
+    <div class="center">
+
+      <div class="panel console">
+
+        <h2>>_ SYSTEM CONSOLE</h2>
+
+        <p>
+          Loading neural systems...
+        </p>
+
+        <p>
+          Connecting to network...
+        </p>
+
+        <p class="highlight">
+          Access granted.
+        </p>
+
+        <div class="divider"></div>
+
+        <p>
+          > Initializing Portfolio...
+        </p>
+
+        <p>
+          > Welcome, Commander.
+        </p>
+
+        <p class="highlight">
+          > Systems Online.
+        </p>
+
+      </div>
+
+      <div class="panel projects">
+
+        <h2>// FEATURED PROJECTS</h2>
+
+        <div class="project-grid">
+
+          <div class="project-card">
+
+            <div class="project-image">
+              🧠
+            </div>
+
+            <div class="project-content">
+
+              <h3>NEURAL INTERFACE</h3>
+
+              <p>
+                AI-powered futuristic interface
+                with holographic systems.
+              </p>
+
+              <a href="#" class="project-btn">
+                VIEW PROJECT >>
+              </a>
+
+            </div>
+
+          </div>
+
+          <div class="project-card">
+
+            <div class="project-image">
+              🌆
+            </div>
+
+            <div class="project-content">
+
+              <h3>CYBER DASHBOARD</h3>
+
+              <p>
+                Real-time analytics dashboard
+                with advanced AI systems.
+              </p>
+
+              <a href="#" class="project-btn">
+                VIEW PROJECT >>
+              </a>
+
+            </div>
+
+          </div>
+
+          <div class="project-card">
+
+            <div class="project-image">
+              🛡️
+            </div>
+
+            <div class="project-content">
+
+              <h3>SECURE PROTOCOL</h3>
+
+              <p>
+                Futuristic cybersecurity
+                suite with neural encryption.
+              </p>
+
+              <a href="#" class="project-btn">
+                VIEW PROJECT >>
+              </a>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- RIGHT -->
+
+    <div class="rightbar">
+
+      <div class="panel status">
+
+        <h3>SYSTEM STATUS</h3>
+
+        <div class="status-item">
+
+          <div class="status-top">
+            <span>NEURAL NETWORKS</span>
+            <span>100%</span>
+          </div>
+
+          <div class="bar">
+            <div class="fill"></div>
+          </div>
+
+        </div>
+
+        <div class="status-item">
+
+          <div class="status-top">
+            <span>CORE SYSTEMS</span>
+            <span>100%</span>
+          </div>
+
+          <div class="bar">
+            <div class="fill"></div>
+          </div>
+
+        </div>
+
+        <div class="status-item">
+
+          <div class="status-top">
+            <span>DATA STREAM</span>
+            <span>100%</span>
+          </div>
+
+          <div class="bar">
+            <div class="fill"></div>
+          </div>
+
+        </div>
+
+        <div class="status-item">
+
+          <div class="status-top">
+            <span>SECURITY PROTOCOL</span>
+            <span>100%</span>
+          </div>
+
+          <div class="bar">
+            <div class="fill"></div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="panel terminal">
+
+        <h3>TERMINAL LOG</h3>
+
+        <p>> ping system.neon.os</p>
+        <p>Connecting...</p>
+        <p>Connected.</p>
+        <p>Latency: 12ms</p>
+        <p>Security: Active</p>
+        <p>Protocols: Secure</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    lucide.createIcons();
+  </script>
+
+</body>
+</html>
