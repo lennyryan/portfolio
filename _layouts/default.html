@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,25 +11,23 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;800&display=swap" rel="stylesheet">
 
   <!-- CSS -->
-  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
 
-  <!-- Animated Background -->
-  <div class="background-grid"></div>
+  <!-- GRID BACKGROUND -->
+  <div class="grid-background"></div>
 
-  <!-- Hero Section -->
+  <!-- HERO -->
   <header class="hero">
-
-    <div class="hero-overlay"></div>
 
     <div class="hero-content">
 
-      <p class="system-text">
+      <p class="system-line">
         > INITIALIZING SYSTEM...
       </p>
 
@@ -40,17 +39,17 @@
         COMPUTER SCIENTIST
       </h2>
 
-      <p class="typing">
+      <p class="subtitle">
         AI • Cybersecurity • Automation • Innovation
       </p>
 
       <div class="hero-buttons">
 
-        <a href="#about" class="btn-primary">
+        <a href="#about" class="btn btn-primary">
           ACCESS PROFILE
         </a>
 
-        <a href="#projects" class="btn-secondary">
+        <a href="#projects" class="btn btn-secondary">
           VIEW PROJECTS
         </a>
 
@@ -60,10 +59,10 @@
 
   </header>
 
-  <!-- Main Layout -->
-  <main class="container">
+  <!-- MAIN -->
+  <main class="layout">
 
-    <!-- Sidebar -->
+    <!-- SIDEBAR -->
     <aside class="sidebar">
 
       <div class="profile-card">
@@ -72,17 +71,17 @@
           LR
         </div>
 
-        <h2>
+        <h3>
           Lenny Ryan
-        </h2>
+        </h3>
 
-        <p class="role">
+        <p>
           Future Tech Engineer
         </p>
 
       </div>
 
-      <nav class="nav-menu">
+      <nav class="nav-links">
 
         <a href="#about">
           ABOUT
@@ -110,17 +109,28 @@
 
       </nav>
 
+      <div class="system-panel">
+
+        <h4>
+          SYSTEM INFO
+        </h4>
+
+        <p>> STATUS: ONLINE</p>
+        <p>> USER: LENNY_RYAN</p>
+        <p>> LOCATION: KENYA</p>
+        <p>> UPTIME: 24/7</p>
+
+      </div>
+
     </aside>
 
-    <!-- Main Content -->
+    <!-- CONTENT -->
     <section class="content">
 
-      <!-- About -->
-      <section id="about" class="card">
+      <!-- ABOUT -->
+      <section class="card" id="about">
 
-        <h2>
-          ABOUT
-        </h2>
+        <h2>ABOUT</h2>
 
         <p>
           Passionate computer science student focused on artificial intelligence,
@@ -130,29 +140,44 @@
 
       </section>
 
-      <!-- Education -->
-      <section id="education" class="card">
+      <!-- EDUCATION -->
+      <section class="card" id="education">
 
-        <h2>
-          EDUCATION
-        </h2>
+        <h2>EDUCATION</h2>
 
-        <div class="timeline">
+        <div class="timeline-item">
 
-          <div class="timeline-item">
-            <span class="year">2026 - 2029</span>
+          <span class="year">
+            2026 - 2029
+          </span>
+
+          <div>
             <h3>Gisma University of Applied Sciences</h3>
             <p>Computer Science</p>
           </div>
 
-          <div class="timeline-item">
-            <span class="year">2022 - 2025</span>
+        </div>
+
+        <div class="timeline-item">
+
+          <span class="year">
+            2022 - 2025
+          </span>
+
+          <div>
             <h3>Moi High School Kabarak</h3>
             <p>KCSE Mean Grade: A</p>
           </div>
 
-          <div class="timeline-item">
-            <span class="year">2014 - 2021</span>
+        </div>
+
+        <div class="timeline-item">
+
+          <span class="year">
+            2014 - 2021
+          </span>
+
+          <div>
             <h3>Visa Oshwal Primary School</h3>
             <p>KCPE Marks: 392/500</p>
           </div>
@@ -161,47 +186,47 @@
 
       </section>
 
-      <!-- Projects -->
-      <section id="projects" class="card">
+      <!-- PROJECTS -->
+      <section class="card" id="projects">
 
-        <h2>
-          PROJECTS
-        </h2>
+        <h2>PROJECTS</h2>
 
         <div class="project-grid">
 
           <div class="project-card">
 
-            <h3>
-              Quiz & Syllabus App
-            </h3>
+            <h3>Quiz & Syllabus App</h3>
 
             <p>
-              Student-focused learning app with syllabus access and sample questions.
+              Student-focused learning app with syllabus access
+              and sample questions.
             </p>
 
             <div class="tags">
+
               <span>JavaScript</span>
               <span>Python</span>
               <span>HTML</span>
+
             </div>
 
           </div>
 
           <div class="project-card">
 
-            <h3>
-              J.A.R.V.I.S
-            </h3>
+            <h3>J.A.R.V.I.S</h3>
 
             <p>
-              AI assistant prototype featuring voice recognition and automation systems.
+              AI assistant prototype featuring voice recognition
+              and automation systems.
             </p>
 
             <div class="tags">
+
               <span>Python</span>
               <span>OpenAI</span>
               <span>AI</span>
+
             </div>
 
           </div>
@@ -210,53 +235,29 @@
 
       </section>
 
-      <!-- Skills -->
-      <section id="skills" class="card">
+      <!-- SKILLS -->
+      <section class="card" id="skills">
 
-        <h2>
-          SKILLS
-        </h2>
+        <h2>SKILLS</h2>
 
         <div class="skills-grid">
 
-          <div class="skill-box">
-            HTML5
-          </div>
-
-          <div class="skill-box">
-            CSS
-          </div>
-
-          <div class="skill-box">
-            Python
-          </div>
-
-          <div class="skill-box">
-            C++
-          </div>
-
-          <div class="skill-box">
-            VS Code
-          </div>
-
-          <div class="skill-box">
-            AI Systems
-          </div>
-
-          <div class="skill-box">
-            Cybersecurity
-          </div>
+          <div class="skill">HTML5</div>
+          <div class="skill">CSS</div>
+          <div class="skill">Python</div>
+          <div class="skill">C++</div>
+          <div class="skill">VS Code</div>
+          <div class="skill">Cybersecurity</div>
+          <div class="skill">AI Systems</div>
 
         </div>
 
       </section>
 
-      <!-- Achievements -->
-      <section id="achievements" class="card">
+      <!-- ACHIEVEMENTS -->
+      <section class="card" id="achievements">
 
-        <h2>
-          ACHIEVEMENTS
-        </h2>
+        <h2>ACHIEVEMENTS</h2>
 
         <ul class="achievement-list">
 
@@ -269,21 +270,19 @@
           </li>
 
           <li>
-            Leadership experience in school clubs and sports teams.
+            Leadership experience in clubs and sports teams.
           </li>
 
         </ul>
 
       </section>
 
-      <!-- Contact -->
-      <section id="contact" class="card">
+      <!-- CONTACT -->
+      <section class="card" id="contact">
 
-        <h2>
-          CONTACT
-        </h2>
+        <h2>CONTACT</h2>
 
-        <div class="contact-grid">
+        <div class="contact-links">
 
           <a href="mailto:lenny.scarce9@email.com">
             EMAIL
@@ -305,7 +304,7 @@
 
   </main>
 
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer class="footer">
 
     <p>
@@ -315,6 +314,5 @@
   </footer>
 
 </body>
-</html>
 
-  
+</html>
