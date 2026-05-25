@@ -1,18 +1,246 @@
-font-family: 'Orbitron', sans-serif;
+/* =========================================
+   CYBERPUNK README THEME
+   Designed for GitHub README.md Styling
+========================================= */
 
+/* Import futuristic font */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap');
 
+:root {
+  --bg-color: #050816;
+  --primary: #00f5ff;
+  --secondary: #ff00ff;
+  --text: #d9faff;
+  --glass: rgba(0, 245, 255, 0.08);
+  --border: rgba(0, 245, 255, 0.35);
+  --shadow: 0 0 15px rgba(0, 245, 255, 0.5);
+}
 
-Loading neural systems...
-Connecting to network...
-Access granted.
+/* Base Styling */
+body {
+  background: linear-gradient(135deg, #050816 0%, #0b1026 100%);
+  color: var(--text);
+  font-family: 'Orbitron', sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
 
+/* Animated Grid Background */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,245,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,245,255,0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+  z-index: -1;
+  animation: gridMove 15s linear infinite;
+}
 
+@keyframes gridMove {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(50px);
+  }
+}
 
-> Initializing Portfolio...
-> Welcome, Commander.
-> Systems Online.
+/* Main Container */
+.markdown-body {
+  max-width: 950px;
+  margin: 40px auto;
+  padding: 40px;
+  background: rgba(5, 8, 22, 0.75);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(12px);
+}
 
+/* Headings */
+h1, h2, h3 {
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px var(--primary);
+}
 
-background: rgba(0,255,255,0.1);
-border: 1px solid #00F5FF;
-box-shadow: 0 0 20px #00F5FF;
+h1 {
+  font-size: 3rem;
+  text-align: center;
+  border-bottom: 2px solid var(--primary);
+  padding-bottom: 15px;
+  margin-bottom: 35px;
+}
+
+h2 {
+  margin-top: 40px;
+  padding-left: 12px;
+  border-left: 4px solid var(--secondary);
+}
+
+h3 {
+  color: #ffffff;
+  margin-top: 25px;
+}
+
+/* Paragraphs */
+p {
+  color: var(--text);
+  font-size: 1rem;
+}
+
+/* Links */
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: var(--secondary);
+  text-shadow: 0 0 12px var(--secondary);
+}
+
+/* Lists */
+ul {
+  list-style: none;
+  padding-left: 20px;
+}
+
+ul li {
+  position: relative;
+  margin-bottom: 12px;
+  padding-left: 25px;
+}
+
+ul li::before {
+  content: "▶";
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+  text-shadow: 0 0 10px var(--primary);
+}
+
+/* Code Blocks */
+pre {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px;
+  overflow-x: auto;
+  box-shadow: 0 0 12px rgba(0,245,255,0.2);
+}
+
+code {
+  color: var(--primary);
+  font-family: monospace;
+}
+
+/* Section Cards */
+section,
+blockquote {
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  margin-top: 25px;
+  box-shadow: 0 0 12px rgba(0,245,255,0.12);
+  transition: 0.3s ease;
+}
+
+section:hover,
+blockquote:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px rgba(0,245,255,0.35);
+}
+
+/* Horizontal Line */
+hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--primary),
+    transparent
+  );
+  margin: 40px 0;
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table th,
+table td {
+  border: 1px solid var(--border);
+  padding: 14px;
+  text-align: left;
+}
+
+table th {
+  background: rgba(0,245,255,0.1);
+  color: var(--primary);
+}
+
+table tr:hover {
+  background: rgba(0,245,255,0.05);
+}
+
+/* Neon Glow Animation */
+@keyframes neonPulse {
+  0% {
+    text-shadow: 0 0 5px var(--primary);
+  }
+  50% {
+    text-shadow:
+      0 0 10px var(--primary),
+      0 0 20px var(--primary);
+  }
+  100% {
+    text-shadow: 0 0 5px var(--primary);
+  }
+}
+
+h1, h2 {
+  animation: neonPulse 3s infinite ease-in-out;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050816;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 10px;
+  box-shadow: 0 0 10px var(--primary);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .markdown-body {
+    margin: 15px;
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+}
