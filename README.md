@@ -1,4 +1,4 @@
-# Lenny Ryan Munene Njuguna
+# Computer Scientist
 # How to reach me 
 📞 +254-793858454  
 📧 lenny.scarce9@email.com  
