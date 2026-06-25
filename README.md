@@ -28,33 +28,17 @@
 
 # Personal Projects
 
-## Quiz and Syllabus App
-📅 2021  
 
-Developed a simple application that allows students to access their syllabus and sample questions.
-
-### Responsibilities
-- Designed the user interface
-- Improved HTML development skills
-
-### Technologies Used
-- JavaScript
-- Python
-- HTML
-
----
-
-## J.A.R.V.I.S
+## Expense Tracker
 📅 2026  
-
-Developing an AI assistant prototype featuring voice recognition and automation capabilities.
+Wrote code for an expense tracker 
 
 ### Responsibilities
 - Writing and structuring the codebase
 
 ### Technologies Used
 - Python
-- OpenAI API
+- JSON
 
 ---
 
@@ -98,7 +82,7 @@ Developing an AI assistant prototype featuring voice recognition and automation 
 # Achievements
 
 ## Secured Distinction Honors
-Graduated high school with the highest distinction in 2026.
+Graduated from high school with the highest distinction in 2026.
 
 ## Cognitive Stamina
 Won gold medals in the World Scholars debate competition in 2023.
