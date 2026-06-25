@@ -31,7 +31,7 @@
 
 ## Expense Tracker
 📅 2026  
-Wrote code for an expense tracker 
+Developed a command-line expense tracking application in Python that enables users to record, view, and calculate expenses. The application stores data persistently using JSON files and demonstrates file handling, modular programming, data structures, and user interaction through a menu-driven interface. 
 
 ### Responsibilities
 - Writing and structuring the codebase
